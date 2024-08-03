@@ -31,6 +31,8 @@
     height: 600px;
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .generateKey {
@@ -52,7 +54,7 @@
     height: 40px;
     width: 110px;
     color: white;
-    background-color: rgba(51, 51, 51, 255);
+    background-color: rgb(72, 30, 56);
     border-color: white;
     border-width: 3px;
     border-radius: 5px;
@@ -60,19 +62,34 @@
     font-size: 25px;
 }
 
-#matching {
+#secret-key {
     text-align: center;
     height: 40px;
     width: 110px;
+    color: white;
+    background-color: rgb(72, 30, 56);
+    border-color: white;
+    border-width: 3px;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: larger;
+
+}
+
+.grid-container {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.common-button {
+    height: 50px;
+    width: 100px;
     color: white;
     background-color: rgba(51, 51, 51, 255);
     border-color: white;
     border-width: 3px;
     border-radius: 5px;
     font-weight: 600;
-    font-size: larger;
-    margin-top: 20px;
-}
-.grid-container{
-    display: grid;
+    font-size: 25px;
 }

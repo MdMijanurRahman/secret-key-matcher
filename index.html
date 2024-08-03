@@ -13,28 +13,30 @@
         <div class="generatePart">
             <button onclick="generateSixDigitNumber()" id="generateKeyButton" class="generateKey">Generate</br>Secret
                 Key</button>
-            <textarea name="" id="numberTextarea"></textarea>
+            <textarea name="" id="secret-key"></textarea>
         </div>
 
 
         <div class="keypadPart">
-            <h1>Enter PIN: </h1>
-            <textarea name="" id="matching">767859</textarea>
-            <br>
-            <div class="grid-container">
-                <button class="one common-button">1</button>
-                <button class="two common button">2</button>
-                <button class="three common button">3</button>
-                <button class="four common button">4</button>
-                <button class="five common button">5</button>
-                <button class="six common-button">6</button>
-                <button class="seven common-button">7</button>
-                <button class="eight common-button">8</button>
-                <button class="nine common-button">9</button>
-                <button class="zero common-button">0</button>
-                <button class="del common-button">x</button>
-                <button class="sub common-button">submit</button>
-                <button class="clearme common-button">clear</button>
+            <div class="keypadPartAbove">
+                <h1>Enter PIN: </h1>
+                <textarea name="" id="numberTextarea"></textarea>
+            </div>
+            <div class="grid-container" id="buttonContainer">
+                <button data-digit="1" class="common-button">1</button>
+                <button data-digit="2" class="common-button">2</button>
+                <button data-digit="3" class="common-button">3</button>
+                <button data-digit="4" class="common-button">4</button>
+                <button data-digit="5" class="common-button">5</button>
+                <button data-digit="6" class="common-button">6</button>
+                <button data-digit="7" class="common-button">7</button>
+                <button data-digit="8" class="common-button">8</button>
+                <button data-digit="9" class="common-button">9</button>
+                <button data-digit="0" class="common-button">0</button>
+                <button id="crossButton" class="common-button">*</button>
+                <button id="submitButton" class="common-button">Submit</button>
+                <button id="clearButton" class="common-button">Clear</button>
+
             </div>
 
         </div>
@@ -48,8 +50,38 @@
             const number = Math.floor(Math.random() * (max - min + 1)) + min;
 
             // Set the number in the textarea
-            document.getElementById('numberTextarea').value = number;
+            document.getElementById('secret-key').value = number;
         }
+
+        document.getElementById('buttonContainer').addEventListener('click', function (event) {
+            const textarea = document.getElementById('numberTextarea');
+            const message = document.getElementById('message');
+
+            if (event.target.tagName === 'BUTTON') {
+                const digit = event.target.getAttribute('data-digit');
+
+                if (digit !== null) {
+                    if (textarea.value.length < 6) {
+                        textarea.value += digit;
+                    }
+                } else if (event.target.id === 'crossButton') {
+                    // Remove the last digit
+                    textarea.value = textarea.value.slice(0, -1);
+                } else if (event.target.id === 'clearButton') {
+                    // Clear the textarea
+                    textarea.value = '';
+                } else if (event.target.id === 'submitButton') {
+                    // Submit the number and check if it matches the secret key
+                    if (textarea.value.toString() === number.toString()) {
+                        message.textContent = "Your secret key is matched";
+                    } else {
+                        message.textContent = "Your secret key does not match";
+                    }
+                }
+            }
+        });
+
+
 
     </script>
 </body>
