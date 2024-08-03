@@ -11,16 +11,16 @@
 <body>
     <div class="outside">
         <div class="generatePart">
-            <button onclick="generateSixDigitNumber()" id="generateKeyButton" class="generateKey">Generate</br>Secret
+            <button id="generateButton" class="generateKey">Generate</br>Secret
                 Key</button>
-            <textarea name="" id="secret-key"></textarea>
+            <textarea name="" id="generatedNumberTextarea"></textarea>
         </div>
 
 
         <div class="keypadPart">
             <div class="keypadPartAbove">
                 <h1>Enter PIN: </h1>
-                <textarea name="" id="numberTextarea"></textarea>
+                <textarea name="" id="inputNumberTextarea"></textarea>
             </div>
             <div class="grid-container" id="buttonContainer">
                 <button data-digit="1" class="common-button">1</button>
@@ -38,51 +38,58 @@
                 <button id="clearButton" class="common-button">Clear</button>
 
             </div>
+            <div id="message-division">
+               <!-- <h2> Need to put my message here.</h2> -->
+            </div>
 
         </div>
 
     </div>
+    <p id="message"></p>
     <script>
+        let secretKey = '';
+
+        // Function to generate a random six-digit number
         function generateSixDigitNumber() {
-            // Generate a random six-digit number
             const min = 100000;
             const max = 999999;
-            const number = Math.floor(Math.random() * (max - min + 1)) + min;
-
-            // Set the number in the textarea
-            document.getElementById('secret-key').value = number;
+            return Math.floor(Math.random() * (max - min + 1)) + min;
         }
 
-        document.getElementById('buttonContainer').addEventListener('click', function (event) {
-            const textarea = document.getElementById('numberTextarea');
+        // Function to handle button clicks
+        function handleButtonClick(event) {
+            const inputTextarea = document.getElementById('inputNumberTextarea');
             const message = document.getElementById('message');
 
             if (event.target.tagName === 'BUTTON') {
                 const digit = event.target.getAttribute('data-digit');
 
                 if (digit !== null) {
-                    if (textarea.value.length < 6) {
-                        textarea.value += digit;
+                    if (inputTextarea.value.length < 6) {
+                        inputTextarea.value += digit;
                     }
                 } else if (event.target.id === 'crossButton') {
-                    // Remove the last digit
-                    textarea.value = textarea.value.slice(0, -1);
+                    inputTextarea.value = inputTextarea.value.slice(0, -1);
                 } else if (event.target.id === 'clearButton') {
-                    // Clear the textarea
-                    textarea.value = '';
+                    inputTextarea.value = '';
                 } else if (event.target.id === 'submitButton') {
-                    // Submit the number and check if it matches the secret key
-                    if (textarea.value.toString() === number.toString()) {
+                    if (inputTextarea.value === secretKey) {
                         message.textContent = "Your secret key is matched";
                     } else {
                         message.textContent = "Your secret key does not match";
                     }
                 }
             }
+        }
+
+        // Generate button event listener
+        document.getElementById('generateButton').addEventListener('click', function () {
+            secretKey = generateSixDigitNumber().toString();
+            document.getElementById('generatedNumberTextarea').value = secretKey;
         });
 
-
-
+        // Add event listener for digit and control buttons
+        document.getElementById('buttonContainer').addEventListener('click', handleButtonClick);
     </script>
 </body>
 
