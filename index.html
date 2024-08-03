@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secret-Key-Matcher</title>
+    <link rel="stylesheet" href="./styles/key_styles.css">
+</head>
+
+<body>
+    <div class="outside">
+        <div class="generatePart">
+            <button onclick="generateSixDigitNumber()" id="generateKeyButton" class="generateKey">Generate</br>Secret
+                Key</button>
+            <textarea name="" id="numberTextarea"></textarea>
+        </div>
+
+
+        <div class="keypadPart">
+            <h1>Enter PIN: </h1>
+            <textarea name="" id="matching">767859</textarea>
+            <br>
+            <div class="grid-container">
+                <button class="one common-button">1</button>
+                <button class="two common button">2</button>
+                <button class="three common button">3</button>
+                <button class="four common button">4</button>
+                <button class="five common button">5</button>
+                <button class="six common-button">6</button>
+                <button class="seven common-button">7</button>
+                <button class="eight common-button">8</button>
+                <button class="nine common-button">9</button>
+                <button class="zero common-button">0</button>
+                <button class="del common-button">x</button>
+                <button class="sub common-button">submit</button>
+                <button class="clearme common-button">clear</button>
+            </div>
+
+        </div>
+
+    </div>
+    <script>
+        function generateSixDigitNumber() {
+            // Generate a random six-digit number
+            const min = 100000;
+            const max = 999999;
+            const number = Math.floor(Math.random() * (max - min + 1)) + min;
+
+            // Set the number in the textarea
+            document.getElementById('numberTextarea').value = number;
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,78 @@
+.outside {
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5px;
+    margin: 20px;
+
+}
+
+/*leftside basic*/
+.generatePart {
+    background-color: lightslategray;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    width: 50%;
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+/*right side basic*/
+.keypadPart {
+    background-color: lightgreen;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    width: 50%;
+    height: 600px;
+    display: flex;
+    justify-content: center;
+}
+
+.generateKey {
+    text-align: center;
+    height: 50px;
+    width: 120px;
+    color: white;
+    border-color: white;
+    border-width: 5px;
+    background-color: rgb(178, 178, 148);
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: large;
+    margin-bottom: 20px;
+}
+
+#numberTextarea {
+    text-align: center;
+    height: 40px;
+    width: 110px;
+    color: white;
+    background-color: rgba(51, 51, 51, 255);
+    border-color: white;
+    border-width: 3px;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 25px;
+}
+
+#matching {
+    text-align: center;
+    height: 40px;
+    width: 110px;
+    color: white;
+    background-color: rgba(51, 51, 51, 255);
+    border-color: white;
+    border-width: 3px;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: larger;
+    margin-top: 20px;
+}
+.grid-container{
+    display: grid;
+}
