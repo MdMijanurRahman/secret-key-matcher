@@ -23,6 +23,7 @@
 }
 
 /*right side basic*/
+
 .keypadPart {
     background-color: lightgreen;
     border-top-right-radius: 5px;
@@ -95,20 +96,9 @@
     font-size: 25px;
 }
 h2{
-    text-align=center;
+    text-align:center;
 }
 
-/*for mobile screens*/
-@media screen and (max-width: 400px ) {
-    .grid-container {
-        margin-top: 20px;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-    }
-    
-    
-    
-}
 /*for tablet screens*/
 
 @media screen and (max-width: 800px ) {
@@ -117,8 +107,31 @@ h2{
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
     }
+    .outside {
+        flex-direction: column;
     
+    }
+    .common-button {
+        height: 30px;
+        width: 70px;
+        font-weight: 400;
+    font-size: 15px;
+    }
+
+    .generatePart {
+        height: 300px;
+        
+    }
+}
+
+/*for mobile screens*/
+@media screen and (max-width: 450px ) {
+    .grid-container {
+        margin-top: 20px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+       
     
-  
     
 }
